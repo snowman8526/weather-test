@@ -1,7 +1,3 @@
-from typing import List
-
-from click import command
-
 from .models import UsersDb, session, City, LogUser
 from datetime import datetime as dt
 

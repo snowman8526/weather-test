@@ -1,7 +1,7 @@
 import requests
 import datetime
 
-from bot.db.db_commands import get_city, update_city, add_city
+from db.db_commands import get_city, update_city, add_city
 
 
 async def get_weather(city_name: str):

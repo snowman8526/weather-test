@@ -1,6 +1,6 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
-from bot.db.models import UsersDb
+from db.models import UsersDb
 
 
 async def user_keyboard(user: UsersDb):

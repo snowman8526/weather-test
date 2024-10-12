@@ -3,11 +3,11 @@ from aiogram.filters import Command
 from aiogram import F, Router
 from aiogram.fsm.context import FSMContext
 
-from bot.db.db_commands import update_user, get_city, login_user, get_user, add_user_db
-from bot.keyboard.user.user_keyboard import user_keyboard
-from bot.loader import bot
-from bot.logick.user.weather import get_weather
-from bot.state.user.user_state import ReuseCityState, WeatherState
+from db.db_commands import update_user, get_city, login_user, get_user, add_user_db
+from keyboard.user.user_keyboard import user_keyboard
+from loader import bot
+from logick.user.weather import get_weather
+from state.user.user_state import ReuseCityState, WeatherState
 
 router = Router(name=__name__)
 
@@ -65,7 +65,7 @@ async def print_weather(message: Message, state: FSMContext):
         await login_user(id_user=user.id, command=f'погода в {city.name}', answer=text)
     else:
         await any_user(message)
-
+@router.message(F.text.lower().contains('поменять город'))
 async def add_user(message: Message, state: FSMContext):
     await add_user_db(message.from_user.id)
     await state.set_state(ReuseCityState.city)
@@ -73,7 +73,6 @@ async def add_user(message: Message, state: FSMContext):
 
 @router.message()
 async def any_user(message: Message, state: FSMContext):
-    print('1')
     await bot.send_message(message.from_user.id, 'Вы ввели чтото не правильное попробуйте сначала /weather',
                                reply_markup=ReplyKeyboardRemove())
 

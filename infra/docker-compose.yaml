@@ -2,26 +2,19 @@ version: '3.6'
 
 services:
 
-  rtts:
-    build: ../rtts/
-    ports:
-      - "8080:8080"
-    restart: always
-    deploy:
-      resources:
-        limits:
-          memory: 5g
+#  db:
+#    image: postgres:14.4-alpine
+#    restart: always
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data/
+#    ports:
+#      - "5432:5432"
+#    env_file:
+#      - ./.env
 
   bot:
     build: ../bot/
     restart: always
 
-  bot_admin:
-    build: ../bot_admin/
-    ports:
-      - "8000:8000"
-    restart: always
-#  web:
-#    build: ../web/
-#    restart: always
-
+#volumes:
+#  postgres_data:

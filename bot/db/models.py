@@ -7,11 +7,13 @@ from sqlalchemy.orm import declarative_base, sessionmaker, scoped_session, relat
 
 from datetime import datetime as dt
 
-dbname = 'test'
-user = 'postgres'
-password = 'postgres'
-host = '127.0.0.1'
-engine = create_engine(f'postgresql://{user}:{password}@{host}:5432/{dbname}')
+# dbname = 'test'
+# user = 'postgres'
+# password = 'postgres'
+# host = '127.0.0.1'
+# engine = create_engine(f'postgresql://{user}:{password}@{host}:5432/{dbname}')
+
+engine = create_engine('sqlite:///example.db')
 
 
 session = scoped_session(sessionmaker(bind=engine))
