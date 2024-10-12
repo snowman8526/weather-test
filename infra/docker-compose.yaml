@@ -1,0 +1,27 @@
+version: '3.6'
+
+services:
+
+  rtts:
+    build: ../rtts/
+    ports:
+      - "8080:8080"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 5g
+
+  bot:
+    build: ../bot/
+    restart: always
+
+  bot_admin:
+    build: ../bot_admin/
+    ports:
+      - "8000:8000"
+    restart: always
+#  web:
+#    build: ../web/
+#    restart: always
+
